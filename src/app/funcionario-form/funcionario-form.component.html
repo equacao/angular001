@@ -1,12 +1,25 @@
+
+<div class="container">
+  <h1>{{ nome | uppercase }}</h1>
+  <h1>{{ dataAniversario | date:'dd/MM/y' }}</h1>
+  <h1>{{ preco | number:'1.2-2' }}</h1>
+  <h1>{{ troco | currency:'BRL':true:'1.2-2' }}</h1>
+</div>
+
+
 <div class="alert alert-success" role="alert" [hidden]="!adicionado">
-    Funcionário adicionado: <strong>{{nome}}</strong>
+    Funcionário adicionado: <strong>{{nome | uppercase}}</strong>
  </div>
 
 
  <div class="form-group">
    <label>Example label</label>
-   <input type="text" class="form-control" [(ngModel)]="nome" (focus)="adicionado = false">
+   <input type="text" class="form-control" [(ngModel)]="nome" (focus)="adicionado = false"
+    appCampoColorido cor='red' #campo="campoColorido">
  </div>
 
  <button type="button" class="btn btn-primary" (click)="adicionar()"
    [disabled]="nome.length == 0">Acicionar</button>
+
+   <button class="btn btn-info" (click)="campo.colorir()">Colorir</button>
+   <button class="btn btn-info" (click)="campo.descolorir()">Descolorir</button>
